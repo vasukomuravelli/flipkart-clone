@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: Roboto, Arial, sans-serif;
+      font-size: large;
+      background-color: #f1f3f6;
+    }
+    #containerp {
+      display: flex;
+      margin: auto;
+      width: 85%;
+      background-color: white;
+    }
+    .img_btn {
+      width: 29%;
+      margin: 1%;
+      padding: 2%;
+    }
+    .img_btn img {
+      margin-left: 18%;
+      padding: 5%;
+      border: 1px solid #f1f3f6;
+      position: relative;
+      display: inline-block;
+    }
+    .heart{
+        position: absolute;
+        display: inline-block;
+        right: 69%;
+        top: 10%;
+        cursor: pointer;
+        color:grey;
+        background-color: #f1f3f6;
+        border-radius: 50%;
+        padding: 0.5%;
+    }
+    .buttons > button:nth-child(1) {
+      background-color: #ff9f00;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 3% 4% 3% 3%;
+      vertical-align: middle;
+      display: flex;
+    }
+    .buttons > button:nth-child(2) {
+      background-color: #fb641b;
+      border: none;
+      cursor: pointer;
+      color: white;
+      display: flex;
+      padding: 3% 4% 3% 3%;
+    }
+    .buttons span {
+      color: white;
+      margin: 8px;
+    }
+    .details {
+      width: 69%;
+      margin: 1%;
+      padding: 3% 3% 3% 0;
+      height: 90%;
+      overflow-y: scroll;
+    }
+    .details::-webkit-scrollbar {
+      display: none;
+    }
+    .details > p:nth-child(1) {
+      font-size: larger;
+    }
+    .rev_rat {
+      display: flex;
+      justify-content: space-between;
+      width: 27%;
+    }
+    .rev_rat > div {
+      background-color: #388e3c;
+      color: white;
+      display: flex;
+      height: 22px;
+    }
+    .rev_rat > div p {
+      font-size: large;
+      margin-top: 0%;
+    }
+    .rev_rat > div span {
+      font-size: 20px;
+    }
+    .rev_rat > p {
+      margin-top: auto;
+    }
+    .rev_rat > img {
+      width: 34%;
+      height: 0%;
+      margin-top: inherit;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2%;
+    }
+    .price {
+      display: flex;
+      justify-content: space-between;
+      width: 30%;
+      vertical-align: baseline;
+    }
+    .price > p:nth-child(1) {
+      font-size: x-large;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .price > p:nth-child(2) {
+      color: #878787;
+    }
+    .price > p:nth-child(3) {
+      color: #388e3c;
+      font-weight: 500;
+    }
+    .offers > p {
+      font-weight: 590;
+    }
+    .offers ul {
+      padding-left: 0%;
+    }
+    .offers ul > li {
+      display: flex;
+      vertical-align: middle;
+    }
+    .offers ul > li p {
+      margin-top: auto;
+      margin-left: 1%;
+    }
+    .offers ul > li span {
+      color: #388e3c;
+      font-size: 20px;
+    }
+    .highlights {
+      display: flex;
+      width: max-content;
+      justify-content: space-between;
+    }
+    .highlights > p {
+      color: #878787;
+    }
+    .specs {
+      list-style: none;
+    }
+    .specs li::before {
+      content: "\2022";
+      color: #878787;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .services_offer {
+      list-style: none;
+    }
+    .services_offer li {
+      display: flex;
+      vertical-align: middle;
+    }
+    .services_offer li span {
+      color: #2874f0;
+      font-size: 20px;
+    }
+    .services_offer li p {
+      margin-top: auto;
+    }
+    .del {
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+    }
+    .del > p {
+      color: #878787;
+    }
+    .del > div {
+      display: flex;
+      border-bottom: 1px solid #2874f0;
+      width: 70%;
+      vertical-align: middle;
+      justify-content: space-around;
+    }
+    .del > div span {
+      color: #2874f0;
+      margin-top: 14px;
+    }
+    .del > div input {
+      border: none;
+      font-weight: bold;
+      font-size: medium;
+      width: 65%;
+    }
+    .del > div input:focus {
+      outline-width: 0;
+    }
+    .del > div p {
+      color: #2874f0;
+      font-weight: bold;
+      font-size: medium;
+      cursor: pointer;
+    }
+    .del_cond {
+      font-size: small;
+      color: #878787;
+      margin-top: -10px;
+    }
+  </style>
+  <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <div id="containerp"></div>
+  </body>
+</html>
+<script>
+  // import {checkpincode} from "./scripts/checkpincode.js";
+  let product = {
+    Brand: "fire-Boltt",
+    Category: "earPhones",
+    Image:
+      "https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/h_300,w_300/v1623479335/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/234793_ixa16w.png/fltn,mxw_240,f_auto",
+    Name: "Fire-Boltt BE1101 In-Ear Noise Isolation Truly Wireless Earbuds with Mic",
+    New_Price: 1699,
+    Old_Price: 5999,
+    Rating: 3,
+    Rating_Review_count: 0,
+    Specifications: {
+      Charger: "Provided in box",
+      Voice_Assistant_Support: "yes",
+      Bluetooth: "V 5.0",
+      condition: "New",
+    },
+    other_images: [],
+  };
+  let container = document.getElementById("containerp");
+  let img_btn = document.createElement("div");
+  img_btn.setAttribute("class", "img_btn");
+  let details = document.createElement("div");
+  details.setAttribute("class", "details");
+  let image = document.createElement("img");
+  image.src = product.Image;
+  let wishlist_icon = document.createElement("div");
+  wishlist_icon.innerHTML = `<span class="material-icons" onclick = "addToWishlist()">favorite_border </span>`;
+  wishlist_icon.setAttribute("class", "heart");
+  let buttons = document.createElement("div");
+  buttons.setAttribute("class", "buttons");
+  let Add = document.createElement("button");
+  Add.innerHTML = `<span class="material-icons">shopping_cart</span><p> ADD TO CART</p>`;
+  Add.onclick = function () {
+    addproduct();
+  };
+  let buy = document.createElement("button");
+  buy.innerHTML = `<span class="material-icons">flash_on</span><p> BUY NOW</p>`;
+  buy.onclick = function () {
+    addproduct();
+    window.location.href = "checkout.html";
+  };
+  buttons.append(Add, buy);
+  img_btn.append(image,wishlist_icon, buttons);
+  let title = document.createElement("p");
+  title.innerText = product.Name;
+  let Rating_Review_count = document.createElement("div");
+  let rating = document.createElement("div");
+  let Reviews = document.createElement("p");
+  let f_assure = document.createElement("img");
+  if (product.rating != 0) {
+    rating.innerHTML = `<p>${product.Rating}</p><span class="material-icons">star_border</span>`;
+    Reviews.innerText = `${product.Rating_Review_count} Reviews`;
+  }
+  f_assure.src =
+    "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
+  let price = document.createElement("div");
+  let New_price = document.createElement("p");
+  New_price.innerText = `₹ ${product.New_Price}`;
+  let Old_price = document.createElement("p");
+  Old_price.innerHTML = `<s>₹ ${product.Old_Price}</s>`;
+  let discount_tag = document.createElement("p");
+  if (product.Old_Price != 0) {
+    let discount =
+      ((product.Old_Price - product.New_Price) / product.Old_Price) * 100;
+    discount_tag.textContent = Math.floor(discount) + "% Off";
+  } else {
+    discount_tag.textContent = "";
+    discount_tag.style.display = "none";
+  }
+  price.append(New_price, Old_price, discount_tag);
+  price.setAttribute("class", "price");
+  Rating_Review_count.append(rating, Reviews, f_assure);
+  Rating_Review_count.setAttribute("class", "rev_rat");
+  let offers = document.createElement("div");
+  offers.setAttribute("class", "offers");
+  let available = document.createElement("p");
+  available.textContent = "Available offers";
+  let a_offers = document.createElement("ul");
+  let str = `<li><span class="material-icons">sell</span><p> Flipkart Pay Later</p></li>
+    <li><span class="material-icons">sell</span><p><b style = "font-weight:590">Bank Offer</b>  5% Unlimited Cashback on Flipkart Axis Bank Credit Card</p></li>
+    <li><span class="material-icons">sell</span><p><b style = "font-weight:590">Bank Offer</b>  15% Instant discount on first Pay Later order of ₹500 and above</p></li>
+    <li><span class="material-icons">sell</span><p><b style = "font-weight:590">Partner Offer</b>  Buy and Get Free 6 months Gaana Plus Subscription</p></li>
+    <li><span class="material-icons">event_available</span><p>No Cost EMI on Bajaj Finserv EMI Card on cart value above ₹2999</p></li>`;
+  a_offers.innerHTML = str;
+  offers.append(available, a_offers);
+  let specs = document.createElement("ul");
+  specs.setAttribute("class", "specs");
+  let text = `<li>Bluetooth : ${product.Specifications.Bluetooth}</li>
+    <li>Charger : ${product.Specifications.Charger}</li>
+    <li>Voice_Assistant_Support : ${product.Specifications.Voice_Assistant_Support}</li>
+    <li>condition : ${product.Specifications.condition}</li>`;
+  specs.innerHTML = text;
+  let highlights = document.createElement("div");
+  let key = document.createElement("p");
+  key.textContent = "Highlights";
+  let ser = document.createElement("p");
+  ser.innerText = "Services";
+  let services_offer = document.createElement("ul");
+  services_offer.setAttribute("class", "services_offer");
+  let string = `<li><span class="material-icons">verified_user</span><p>  1 Year Warranty from the Date of Purchase</p></li>
+    <li><span class="material-icons">autorenew</span><p>  7 Days Replacement Policy</p></li>
+    <li><span class="material-icons">currency_rupee</span><p>  Cash on Delivery available</p></li>`;
+  services_offer.innerHTML = string;
+  highlights.append(key, specs, ser, services_offer);
+  highlights.setAttribute("class", "highlights");
+  let del = document.createElement("div");
+  del.setAttribute("class", "del");
+  let delivery = document.createElement("p");
+  delivery.innerText = "Delivery";
+  let pincode = document.createElement("div");
+  pincode.innerHTML = `<span class="material-icons">room</span><input type = "text" placeholder = "Enter Delivery Pincode"><p onclick = "checkPincode()">Check</p>`;
+  let delivery_date = document.createElement("p");
+  let del_cond = document.createElement("p");
+  del_cond.setAttribute("class", "del_cond");
+  del.append(delivery, pincode);
+  details.append(
+    title,
+    Rating_Review_count,
+    price,
+    offers,
+    del,
+    delivery_date,
+    del_cond,
+    highlights
+  );
+  container.append(img_btn, details);
+
+  async function checkPincode() {
+    let input = document.querySelector(".del > div input").value;
+    let res = await fetch(`https://api.postalpincode.in/pincode/${input}`);
+    let address = await res.json();
+    var currentDate = new Date();
+    var day = currentDate.getDate() + 2;
+    var month = currentDate.getMonth() + 1;
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    delivery_date.innerHTML = `Will be delivered to <b style = "font-weight:590"> ${address[0].PostOffice[0].Name},${address[0].PostOffice[0].District} by ${day} ${monthNames[month - 1]}</b>`;
+    del_cond.textContent = `if ordered before by 11:45 PM`;
+  }
+  function addToWishlist(){
+      let heart_button = document.querySelector('.heart');
+      heart_button.style.color = "red";
+    //   heart_button.style.background-color=color "white";
+  }
+</script>
