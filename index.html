@@ -26,19 +26,10 @@
 // Navbar Functionality start
   let nbar = document.querySelector(".navbar");
   nbar.innerHTML = navbar();
-  let menutag = document.getElementById("more");
-  let micon = document.querySelector(".micon");
-  let menu_Options = document.querySelector(".dropdown");
-  menutag.onmouseenter = function () {
-    micon.textContent = "arrow_drop_up";
-    menu_Options.style.visibility = "visible";
-  };
-  menutag.onmouseleave = function () {
-    micon.textContent = "arrow_drop_down";
-    menu_Options.style.visibility = "hidden";
-  };
-  let loginbtn = document.querySelector(".login");
-  loginbtn.onclick = function () {};
+  let login_btn = document.querySelector(".login");
+  let login_drop = document.querySelector(".login_dropdown");
+  login_btn.onclick = function () {};
+
 // Slideshow Functionality start
   let slideshowCont = document.getElementById("slide1");
   slideshowCont.innerHTML = slideshow();
