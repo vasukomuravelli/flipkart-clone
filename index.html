@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Online Shopping Site for Mobiles, Electronics, Furniture, Grocery,
+      Lifestyle, Books & More. Best Offers!
+    </title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <!-- <link rel="icon" href="https://static-assets-web.flixcart.com/www/promos/new/20150528-140547-favicon-retina.ico"/> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  </head>
+  <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
+    <div class="navbar"></div>
+    <div class="slideshow_container" id="slide1"></div>
+  </body>
+</html>
+<script type="module">
+  import navbar from "./components/navbar.js";
+  import slideshow from "./components/slideshow.js";
+// Navbar Functionality start
+  let nbar = document.querySelector(".navbar");
+  nbar.innerHTML = navbar();
+  let menutag = document.getElementById("more");
+  let micon = document.querySelector(".micon");
+  let menu_Options = document.querySelector(".dropdown");
+  menutag.onmouseenter = function () {
+    micon.textContent = "arrow_drop_up";
+    menu_Options.style.visibility = "visible";
+  };
+  menutag.onmouseleave = function () {
+    micon.textContent = "arrow_drop_down";
+    menu_Options.style.visibility = "hidden";
+  };
+  let loginbtn = document.querySelector(".login");
+  loginbtn.onclick = function () {};
+// Slideshow Functionality start
+  let slideshowCont = document.getElementById("slide1");
+  slideshowCont.innerHTML = slideshow();
+
+  let slidePosition = 0;
+  let slides = document.getElementsByClassName("mySlides");
+  const totalslides = slides.length;
+
+  document.getElementById("next").addEventListener("click", function () {
+    moveToNextSlide();
+  });
+  document.getElementById("prev").addEventListener("click", function () {
+    moveToPrevSlide();
+  });
+
+  function moveToNextSlide() {
+    if (slidePosition === totalslides - 1) {
+      slidePosition = 0;
+    } else {
+      slidePosition++;
+    }
+    updateSlidePosition();
+  }
+  function moveToPrevSlide() {
+    if (slidePosition === 0) {
+      slidePosition = totalslides - 1;
+    } else {
+      slidePosition--;
+    }
+    updateSlidePosition();
+  }
+  function updateSlidePosition() {
+    for (let slide of slides) {
+      slide.classList.remove("mySlides--visible");
+      slide.classList.add("mySlides--hidden");
+    }
+    slides[slidePosition].classList.add("mySlides--visible");
+  }
+</script>
