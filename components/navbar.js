@@ -13,8 +13,11 @@ function navbar()
         </div>
     </div></a>
     <div>
-        <input type="text" placeholder="Search for products,brand and more" id="searchbox">
-        <span class="material-icons" id = "search_icon">search</span>
+        <div>
+            <input type="text" placeholder="Search for products,brand and more" id="searchbox">
+            <span class="material-icons" id = "search_icon">search</span>
+        </div>
+        <ul id="output"></ul>
     </div>
 </div>
 <div>
@@ -23,7 +26,7 @@ function navbar()
         <ul class= "login_dropdown">
             <li><b>New Customer? <a>Signup</a></b></li>
             <li><span class="material-icons">account_circle</span> My Profile</li>
-            <li>Flipkart Plus Zone</li>
+            <li><span class="material-icons">add</span> Flipkart Plus Zone</li>
             <li><span class="material-icons">list_alt</span> Orders</li>
             <li><span class="material-icons">favorite</span> Wishlist</li>
             <li><span class="material-icons">confirmation_number</span> Rewards</li>
