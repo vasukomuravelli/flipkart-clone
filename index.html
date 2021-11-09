@@ -17,19 +17,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
     <div class="navbar"></div>
+    <div class="categories"></div>
     <div class="slideshow_container" id="slide1"></div>
   </body>
 </html>
 <script type="module">
   import navbar from "./components/navbar.js";
   import slideshow from "./components/slideshow.js";
+  import {categories} from "./components/categories.js";
+  import {search,debounce,displayResults} from "./scripts/script.js";
 // Navbar Functionality start
   let nbar = document.querySelector(".navbar");
   nbar.innerHTML = navbar();
   let login_btn = document.querySelector(".login");
   let login_drop = document.querySelector(".login_dropdown");
   login_btn.onclick = function () {};
-
+  let searchbar = document.getElementById("searchbox");
+  let output = document.getElementById("output");
+  searchbar.oninput = function(){
+    debounce(search,2000);
+  }
+// categories display
+  let cat = document.querySelector(".categories");
+  cat.innerHTML = categories();
 // Slideshow Functionality start
   let slideshowCont = document.getElementById("slide1");
   slideshowCont.innerHTML = slideshow();
