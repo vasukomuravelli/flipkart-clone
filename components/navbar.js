@@ -36,7 +36,7 @@ function navbar()
     <div class="more">
         <div class="flex">
             <p class = "text" id= "more">More</p>
-            <span class="material-icons micon">arrow_drop_down</span>
+            <span class="material-icons" id = "micon">arrow_drop_down</span>
         </div>
         <ul class = "dropdown">
             <li><span class="material-icons">notifications</span> Notification Preferances</li>
