@@ -1,5 +1,6 @@
-function search(q){
-    fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({name})",
+function search(){
+    let q = document.getElementById("searchbox").value
+    fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filterByFormula=({category})`,
     {
         method : "GET",
         headers: {'Authorization' : 'Bearer keyIkILcyVWkPItLt'},
@@ -7,7 +8,7 @@ function search(q){
         return res.json();
     }).then((res)=>{
         console.log(res.records);
-        displayResults(res.records);
+        // displayResults(res.records);
     })
 }
 let delay;
