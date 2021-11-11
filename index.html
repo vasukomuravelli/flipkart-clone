@@ -23,12 +23,12 @@
     <div class="navbar"></div>
     <div class="categories"></div>
     <div class="slideshow_container" id="slide1"></div>
-    <div class="C_heading"><h2>Travel</h2></div>
+    <div class="C_heading"><p>Travel</p></div>
     <ul class="slider1"></ul>
     <img src="https://rukminim1.flixcart.com/flap/464/708/image/a33323ee3a5b0bc5.jpg?q=70" class="banner"/>
-    <div class="C_heading"><h2>Home Appliances</h2></div>
+    <div class="C_heading"><p>Home Appliances</p></div>
     <ul class="slider2"></ul>
-    <div class="C_heading"><h2>Clothing</h2></div>
+    <div class="C_heading"><p>Clothing</p></div>
     <ul class="slider3"></ul>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -53,6 +53,14 @@
   let login_btn = document.querySelector(".login");
   let login_drop = document.querySelector(".login_dropdown");
   login_btn.onclick = function () {};
+  let more = document.querySelector(".more");
+  let micon = document.getElementById("micon");
+  more.onmouseenter = function(){
+    micon.innerText = "arrow_drop_up";
+  }
+  more.onmouseleave = function(){
+    micon.innerText = "arrow_drop_down";
+  }
   let searchbar = document.getElementById("searchbox");
   let output = document.getElementById("output");
   searchbar.oninput = function(){
@@ -108,49 +116,80 @@
   seggregate("womenscloth",slider3);
   jQuery(document).ready(function($){
     function start_slick(x){
+      if(x=='.slider1')
+      {
         $(x).slick({
-  dots: false,
-  infinite: false,
-  speed: 300,
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  prevArrow: `<span class = "material-icons prev-arrow">navigate_before</span>`,
-  nextArrow: `<span class = "material-icons next-arrow">navigate_next</span>`,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 5,
-        slidesToScroll: 3,
-        infinite: false,
-        dots: false
+          dots: false,
+          infinite: false,
+          speed: 300,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          prevArrow: `<span class = "material-icons prev-arrow">navigate_before</span>`,
+          nextArrow: `<span class = "material-icons next-arrow">navigate_next</span>`,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 3,
+                infinite: false,
+                dots: false
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
       }
-    },
-    {
-      breakpoint: 700,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: false,
-        dots: false
+      else
+      {
+        $(x).slick({
+          dots: false,
+          infinite: false,
+          speed: 300,
+          slidesToShow: 5.5,
+          slidesToScroll: 1,
+          prevArrow: `<span class = "material-icons prev-arrow">navigate_before</span>`,
+          nextArrow: `<span class = "material-icons next-arrow">navigate_next</span>`,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 3,
+                infinite: false,
+                dots: false
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
       }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
-});
     }
     window.setTimeout(()=>{
       start_slick('.slider1')}, 2000,);
@@ -159,4 +198,7 @@
     window.setTimeout(()=>{
     start_slick('.slider3')}, 2000,);
 });
+window.addEventListener('click',()=>{
+  output.style.display = "none";
+})
 </script>
