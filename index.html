@@ -8,9 +8,13 @@
       Online Shopping Site for Mobiles, Electronics, Furniture, Grocery,
       Lifestyle, Books & More. Best Offers!
     </title>
-    <link rel="stylesheet" href="./style/style.css" />
     <!-- <link rel="icon" href="https://static-assets-web.flixcart.com/www/promos/new/20150528-140547-favicon-retina.ico"/> -->
+    <link rel="stylesheet" href="./style/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+    />
   </head>
   <body>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +23,22 @@
     <div class="navbar"></div>
     <div class="categories"></div>
     <div class="slideshow_container" id="slide1"></div>
+    <div class="C_heading"><h2>Travel</h2></div>
+    <ul class="slider1"></ul>
+    <img src="https://rukminim1.flixcart.com/flap/464/708/image/a33323ee3a5b0bc5.jpg?q=70" class="banner"/>
+    <div class="C_heading"><h2>Home Appliances</h2></div>
+    <ul class="slider2"></ul>
+    <div class="C_heading"><h2>Clothing</h2></div>
+    <ul class="slider3"></ul>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    ></script>
   </body>
 </html>
 <script type="module">
@@ -26,6 +46,7 @@
   import slideshow from "./components/slideshow.js";
   import {categories} from "./components/categories.js";
   import {search,debounce,displayResults} from "./scripts/script.js";
+  import {seggregate,showcarousel} from "./components/carousel.js";
 // Navbar Functionality start
   let nbar = document.querySelector(".navbar");
   nbar.innerHTML = navbar();
@@ -78,4 +99,64 @@
     }
     slides[slidePosition].classList.add("mySlides--visible");
   }
+  // carousel functionality start
+  let slider1 = document.querySelector(".slider1");
+  seggregate("travel",slider1);
+  let slider2 = document.querySelector(".slider2");
+  seggregate("homeappliances",slider2);
+  let slider3 = document.querySelector(".slider3");
+  seggregate("womenscloth",slider3);
+  jQuery(document).ready(function($){
+    function start_slick(x){
+        $(x).slick({
+  dots: false,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  prevArrow: `<span class = "material-icons prev-arrow">navigate_before</span>`,
+  nextArrow: `<span class = "material-icons next-arrow">navigate_next</span>`,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+    }
+    window.setTimeout(()=>{
+      start_slick('.slider1')}, 2000,);
+    window.setTimeout(()=>{
+    start_slick('.slider2')}, 2000,);
+    window.setTimeout(()=>{
+    start_slick('.slider3')}, 2000,);
+});
 </script>
