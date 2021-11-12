@@ -352,7 +352,28 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
-
+    .image{
+        height: 100px;
+        margin: 10px 0px 0px 10px;
+        width: 80%;
+    }
+    .fAssure{
+        width: 60px;
+        height: 15px;
+        margin-left: 3px;
+    }
+    .discount_price{
+        font-size: 16px;
+        margin-left: 10px;
+        display: inline-block;
+    }
+    .retail_price{
+        font-size: 14px;
+        margin-left: 1%;
+        display: inline-block;
+        color: #87898B;
+        font-weight: 300;
+    }
 </style>
 
 
@@ -457,31 +478,20 @@
             div2.style.marginLeft ="1% "     
 
             let img = document.createElement("img");
-
+            img.setAttribute('class','image');
             img.src =d3;
-            img.style.height = "100px";
-            img.style.margin="10px 0px 0px 10px "
-            img.style.width = "80%";
 
             let img2 = document.createElement("img");
-            img2.src = "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png"
-            img2.style.width = "60px"
-            img2.style.height="15px"
-            img2.style.marginLeft="3px"
+            img2.setAttribute("class","fAssure");
+            img2.src = "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
+            
             let discount_price = document.createElement("h3");
-
+            discount_price.setAttribute("class","discount_price");
            discount_price.textContent ="₹"+  product.discount_price;
-           discount_price.style.fontSize = "16px"
-           discount_price.style.marginLeft = "10px"
-           discount_price.style.display = "inline-block"
 
            let retail_price = document.createElement("s");
+           retail_price.setAttribute("class","retail_price");
            retail_price.textContent ="₹"+product.retail_price;
-           retail_price.style.fontSize = "15px"
-           retail_price.style.marginLeft = "1%"
-           retail_price.style.display = "inline-block"
-           retail_price.style.color = "#87898B"
-           retail_price.style.fontWeight="300"
 
            let price_prod = document.createElement("p");
            price_prod.textContent = "₹"+product.retail_price
@@ -500,7 +510,7 @@
             if(product.discount_price==product.retail_price){
                 discountper.textContent = 0+"%  Off"
             } else {
-                discountper.textContent =Math.floor ( product.discount_price * 100 /  product.retail_price )+"%"+" "+"Off"+" "+"1 Offer Available"
+                discountper.textContent =Math.floor ( ((product.retail_price-product.discount_price) /  product.retail_price) * 100 )+"%"+" "+"Off"+" "+"1 Offer Available"
             }
             discountper.style.display = "inline-block"
             discountper.style.marginLeft="1%"
