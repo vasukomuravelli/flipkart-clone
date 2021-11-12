@@ -36,13 +36,13 @@ function showcarousel(p,parent)
             name = element.fields.name;
         }
         string += `<li class="item">
-        <div class="box">
+        <div class="box" onclick = "toProductPage(${element})">
             <div class="slide-img">
                 <img src = ${image}>                
             </div>            
             <div class="detail-box">
                 <div class="type">
-                    <a href="#" title = ${element.fields.name}>${name}</a>
+                    <p title = ${element.fields.name}>${name}</p>
                 </div>
                 <div class = "rating">
                     <div><p>${rating}</p><span class="material-icons">star_border</span></div>
