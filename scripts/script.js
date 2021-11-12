@@ -2,16 +2,6 @@ function search(){
     let q = document.getElementById("searchbox").value;
     if(q != "")
     {
-        // fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({category}='${q}')`,
-        // {
-        //     method : "GET",
-        //     headers: {'Authorization' : 'Bearer keyIkILcyVWkPItLt'},
-        // }).then((res)=>{
-        //     return res.json();
-        // }).then((res)=>{
-        //     console.log(res.records);
-        //     displayResults(res.records);
-        // });
         fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?fields%5B%5D=name",
         {
             method:'GET',
@@ -28,19 +18,27 @@ function search(){
                     ar.push(temp);                        
                 }
             });
-            // console.log(ar);
             let matching = [];
             let myPattern = new RegExp('(\\w*'+q+'\\w*)','gi');
             ar.forEach(el=>
             {
-                // console.log(el,"q-before:",q);
                 if(el.match(myPattern))
                 {
-                    console.log(el,"q-after:",q);
                     matching.push(el);
                 }
             });
-            displayResults(matching);
+            if(matching.length != 0)
+            {
+                displayResults(matching);
+            }
+            else
+            {
+                output.innerHTML = null;
+                output.style.display = "block";
+                let failed_results = document.createElement('li');
+                failed_results.innerText = "No Search Results Found";
+                output.append(failed_results);
+            }
         });
     }
     else{
@@ -67,5 +65,27 @@ function displayResults(p)
     });
 
 }
+function toProductPage(p)
+{
+    console.log(p);
+    // if(localStorage.getItem("Flip_product")===null)
+    // {
+    //     localStorage.setItem("Flip_product",[]);
+    // }
+    // let productToDisplay = JSON.parse(localStorage.getItem("Flip_product"));
 
-export {search,debounce,displayResults};
+    // if(productToDisplay.length != 0)
+    // {
+    //     while(productToDisplay.length==0)
+    //     {
+    //         productToDisplay.pop();
+    //     }
+    // }
+    // productToDisplay.push(p);
+    
+    // localStorage.setItem("Flip_product",JSON.stringify(productToDisplay));
+
+    // window.location.href = "productpage.html";
+}
+
+export {search,debounce,displayResults,toProductPage};
