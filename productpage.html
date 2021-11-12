@@ -262,7 +262,7 @@
       
   //5 Wishlist button        
       let wishlist_icon = document.createElement("div");
-          wishlist_icon.innerHTML = `<span class="material-icons" onclick = "addToWishlist()"  ondblclick="removeFromWishlist()">favorite_border </span>`;
+          wishlist_icon.innerHTML = `<span class="material-icons" ondblclick = "addToWishlist()"  onclick="removeFromWishlist(prod)">favorite_border </span>`;
           wishlist_icon.setAttribute("class", "heart");    
        
       container1.append(wishlist_icon);    
@@ -280,7 +280,7 @@
         buy.innerHTML = `<span class="material-icons" style="margin-left:28%; margin-top:6%;">flash_on</span><p style="margin-top:8%; font-weight:790"> BUY NOW</p>`;
         buy.onclick = function () {
           addproduct();
-          window.location.href = "cart.html";
+          window.location.href = "mockdata.html";
         };
         buttons.append(Add, buy);
   
@@ -309,8 +309,8 @@
             f_assure.src ="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
       
             if (prod[0].rating != 0) {
-              rating.innerHTML = `<p>4</p><span class="material-icons">star_border</span>`;
-              Reviews.innerText = `10 Reviews`;
+              rating.innerHTML = Math.round(Math.random()*4+1)+`<span class="material-icons">star_border</span>`;
+              Reviews.innerText = Math.round(Math.random()*100)+" "+"Reviews";
             }
       
             let price = document.createElement("div");
@@ -413,9 +413,11 @@
           del_cond.textContent = `if ordered before by 11:45 PM`;
         }
   
-  
-        function addToWishlist(){
-          
+        var check=false;
+        
+        function addToWishlist(){//Double click to add
+            check=true;
+
             let heart_button = document.querySelector('.heart');
             heart_button.style.color="red";
 
@@ -437,19 +439,30 @@
   
           wishData.push(datainWishlist);
   
-          localStorage.setItem("wishlist",JSON.stringify(wishData));            
+          localStorage.setItem("wishlist",JSON.stringify(wishData));     
+          
         }
 
 
-        function removeFromWishlist(){
+        function removeFromWishlist(prod){ //Single click to remove
           let heart_btn = document.querySelector('.heart');
             heart_btn.style.color="grey";          
 
           let remData=JSON.parse(localStorage.getItem("wishlist"));
+
+          for(var i=0;i<remData.length;i++){
+        if(remData[i].nam==prod[0].name){
+            remData.splice(i,1);
+            break;
+        }
+    }
+          /*
           remData.pop();
           remData.pop();
           remData.pop();//3 pops cause of double click two times
+          */
           localStorage.setItem("wishlist",JSON.stringify(remData));
+
         }
   
         function addproduct(){
