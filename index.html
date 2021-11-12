@@ -15,11 +15,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
     />
-  </head>
-  <body>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
+  </head>
+  <body>
     <div class="navbar"></div>
     <div class="categories"></div>
     <div class="slideshow_container" id="slide1"></div>
@@ -30,6 +30,8 @@
     <ul class="slider2"></ul>
     <div class="C_heading"><p>Clothing</p></div>
     <ul class="slider3"></ul>
+    <div class="flipkart_info"></div>
+    <div class="foot"></div>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -45,7 +47,8 @@
   import navbar from "./components/navbar.js";
   import slideshow from "./components/slideshow.js";
   import {categories} from "./components/categories.js";
-  import {search,debounce,displayResults} from "./scripts/script.js";
+  import {footer,Flipkartinfo} from "./components/footer.js";
+  import {search,debounce,displayResults,toProductPage} from "./scripts/script.js";
   import {seggregate,showcarousel} from "./components/carousel.js";
 // Navbar Functionality start
   let nbar = document.querySelector(".navbar");
@@ -201,4 +204,10 @@
 window.addEventListener('click',()=>{
   output.style.display = "none";
 })
+// page_info
+let info = document.querySelector(".flipkart_info")
+info.innerHTML = Flipkartinfo();
+// Footer 
+let foot = document.querySelector('.foot');
+foot.innerHTML = footer();
 </script>
