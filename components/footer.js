@@ -46,32 +46,30 @@ function footer(){
             <div class="inner_row">
                 <div class="col">
                     <p class="heading"> Mail Us </p>
-                    <p class="mb-1"> Flipkart Internet Private Limited, </p>
-                    <p class="mb-1"> Buildings Alyssa, Begonia &amp; </p>
-                    <p class="mb-1"> Clove Embassy Tech Village, </p>
-                    <p class="mb-1"> Outer Ring Road, Devarabeesanahalli Village, </p>
-                    <p class="mb-1"> Bengaluru, 560103, </p>
-                    <p class="mb-1"> Karnataka, India</p>   
+                    <p class="mb"> Flipkart Internet Private Limited, </p>
+                    <p class="mb"> Buildings Alyssa, Begonia &amp; </p>
+                    <p class="mb"> Clove Embassy Tech Village, </p>
+                    <p class="mb"> Outer Ring Road, Devarabeesanahalli Village, </p>
+                    <p class="mb"> Bengaluru, 560103, </p>
+                    <p class="mb"> Karnataka, India</p>   
                 </div>
     
                 <div class="col">
                     <p class="heading"> Registered Office Address: </p>
-                    <p class="mb-1"> Flipkart Internet Private Limited, </p>
-                    <p class="mb-1"> Buildings Alyssa, Begonia &amp; </p>
-                    <p class="mb-1"> Clove Embassy Tech Village, </p>
-                    <p class="mb-1"> Outer Ring Road, Devarabeesanahalli Village, </p>
-                    <p class="mb-1"> Bengaluru, 560103, </p>
-                    <p class="mb-1"> Karnataka, India </p>
-                    <p class="mb-1"> CIN : U51109KA2012PTC066107 </p>
-                    <p class="mb-1"> Telephone: <a class="text-primary" href="tel:18002029898">1800 202 989</p>
+                    <p class="mb"> Flipkart Internet Private Limited, </p>
+                    <p class="mb"> Buildings Alyssa, Begonia &amp; </p>
+                    <p class="mb"> Clove Embassy Tech Village, </p>
+                    <p class="mb"> Outer Ring Road, Devarabeesanahalli Village, </p>
+                    <p class="mb"> Bengaluru, 560103, </p>
+                    <p class="mb"> Karnataka, India </p>
+                    <p class="mb"> CIN : U51109KA2012PTC066107 </p>
+                    <p class="mb"> Telephone: <a class="text-primary" href="tel:18002029898">1800 202 989</a></p>
                 </div>
             </div>
         </div>
     </div>
+    <hr/>
 </div>
-
-<hr>
-
 <div class="row">
     <div class="flex_footer"> 
         <div>
@@ -94,7 +92,7 @@ function footer(){
             <p class = "mb-1"> Help Center</p>
         </div>
         <div>
-            <p class = "mb-1"> © 2007- 2021 Flipkart.com</p>
+            <p class = "mb"> © 2007- 2021 Flipkart.com</p>
         </div>
         <div>
             <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/payment-method_69e7ec.svg">
