@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Flipkart.com</title>
+       <link rel="icon" href="https://static-assets-web.flixcart.com/www/promos/new/20150528-140547-favicon-retina.ico"/>
+       <link rel="stylesheet" href="./style/style.css" />
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+<body>
+    <div class="navbar"></div>
+    <div id="empty_cart">
+        <h1>My Cart</h1>
+        <img src = "https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" style="width:50%;height:10%;margin-left:25%"/>
+        <p> Your cart is empty!</p>
+        <p style="font-size:14px">Add items to it now.</p>
+        <button><a style="color:#FFFFFF" href="product.html">SHOP NOW</a></button>
+    </div>
+</body>
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js";
+
+    let nbar = document.querySelector(".navbar");
+    nbar.innerHTML = navbar();
+</script>
