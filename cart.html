@@ -79,7 +79,8 @@
     {
         background-color: #fff;
         width: 60%;
-        height: 100%;
+        height: fit-content;
+        padding-bottom: 28px;
         margin: 20px 0px 0px 45px;
         box-sizing: border-box;
     }
@@ -142,7 +143,7 @@
     #div2 
     {
         width: 100%;
-        height:66%;
+        height:fit-content;
         /* border: 1px solid yellow; */
     }
 
@@ -202,11 +203,12 @@
     {
         color: white;
         background-color: #fb641b;
-        width: 40%;
-        height: 45px;
+        width: 30%;
+        height: fit-content;
         border: none;
-        margin-left: 55%;
-        margin-top: 10%;
+        margin-top: 2%;
+        padding: 12px;
+        margin-left: 65%;
         font-size: 18px;
         font-weight: 600;
         cursor: pointer;
@@ -376,6 +378,7 @@
         border-bottom:1px solid #87898B;;
         
     }
+
     .product_details>div>p{
         font-size: 10px;
     }
@@ -410,7 +413,8 @@
     .button_div{
         display: flex;
         margin-left: 5%;
-
+        width: 350px;
+        justify-content: space-between;
     }
     .DiscountAmount,.DeliveryAmount{
         color:  #388e3c;
@@ -424,10 +428,10 @@
     .button_div>button{
         background-color:#FFFFFF;
         border: none;
-        width: 40%;
         height:40%;
         font-size: 17px;
         font-weight: 600;
+        margin-left: -6px;
     }
     .count{
         margin-top:2.5%
@@ -451,7 +455,7 @@
         </div>
         <div>
             <div class="dropdown">
-                <button style="margin-right: 10%;" class="dropbtn">User</button>
+                <button style="margin-right: 10%;" class="dropbtn">vasu</button>
                 <div class="dropdown-content">
                   <a href="#">My Profile</a>
                   <a href="#">SuperCoin Zone</a>
@@ -484,7 +488,7 @@
          
             <div id="div3">
                 <div class="placeorder">
-                   <a href="#"><button>PLACE ORDER</button></a>
+                   <button onclick="topayment()">PLACE ORDER</button>
                 </div>
             </div>
         </div>
@@ -538,15 +542,15 @@
     //         } 
     // if(localStorage.getItem('prods')==null)
     // {
-    //     localStorage.setItem('prods',JSON.stringify([fields,fields,fields]));
+    //     localStorage.setItem('prods',JSON.stringify([fields,fields]));
     // }
-    let cart = JSON.parse(localStorage.getItem("prods"));
+    let cart = JSON.parse(localStorage.getItem("cart"));
 
+    var s3 = 0;
     let Prod_container = document.querySelector(".product_details");
     function showCart(cart){
         let s1 = 0;
         let s2 = 0;
-        let s3 = 0;
         let s4 = 0;
         let counter = 0;
         if(cart.length==0)
@@ -558,22 +562,22 @@
             Prod_container.innerHTML = null;
             cart.forEach(element => {
                 let div = document.createElement("div");
-                let image = JSON.parse(element.image)[0];
+                let image = JSON.parse(element.img)[0];
                 let img = document.createElement("img");
                 img.src = image;
                 let details = document.createElement('div');
                 let title = document.createElement('p');
-                title.innerText = element.name;
+                title.innerText = element.nam;
                 let price_div = document.createElement('div');
                 price_div.setAttribute("class","price_div");
                 let R_price = document.createElement('s');
-                R_price.innerText = "₹"+ +element.retail_price;
+                R_price.innerText = "₹"+ +element.retP;
 
                 let D_price = document.createElement('p');
-                D_price.innerText = "₹"+ +element.discount_price;
+                D_price.innerText = "₹"+ +element.discP;
                 D_price.style.display="inline-block"
                 let dis_per = document.createElement('p');
-                dis_per.innerText = Math.floor(((element.retail_price-element.discount_price)/element.retail_price)*100).toFixed(2)+"% Off";
+                dis_per.innerText = Math.floor(((element.retP-element.discP)/element.retP)*100)+"% Off";
                 dis_per.style.display="inline-block"
                 dis_per.style.color="#388e3c"
                 let f_assure = document.createElement('img');
@@ -582,7 +586,10 @@
                 let button_div = document.createElement('div');
                 button_div.setAttribute("class","button_div");
                 let s_button = document.createElement("button");
-                s_button.innerText = "WISHLIST";
+                s_button.innerText = " ADD TO WISHLIST";
+                s_button.addEventListener("click",function(){
+                    addToWishlist(element);
+                })
                 let r_button = document.createElement('button');
                 r_button.innerText = "REMOVE";
                 r_button.addEventListener("click",function(){
@@ -590,17 +597,18 @@
                 })
                 button_div.append(s_button,r_button);
                 details.append(title,price_div,button_div);
-                s1 += Number(element.retail_price);
-                s2 += Number(element.retail_price-element.discount_price);
-                if((s1-s2)<500)
+                s1 += Number(element.retP);
+                s2 += Number(element.retP-element.discP);
+                if((element.discP)<500)
                 {
                     s4 =`₹${+40}`;
+                    s3 = 40+(s1-s2);
                 }
                 else
                 {
                     s4 = `FREE`;
+                    s3 = s1-s2;
                 }
-                s3 = 40+(s1-s2);
                 counter++;
                 let tag_price = document.querySelector(".count")
                 tag_price.innerText=`My Cart (${counter})`
@@ -628,14 +636,41 @@
     {
         for(let i=0;i<cart.length;i++)
         {
-            if(cart[i].name == p.name)
+            if(cart[i].nam == p.nam)
             {
                 cart.splice(i,1);
                 break;
             }
         }
-        localStorage.setItem('prods',JSON.stringify([cart]));
+        localStorage.setItem('cart',JSON.stringify(cart));
         showCart(cart);
     }
+    function topayment()
+    {
+        window.location.href = `./paymentpage1.html#price=${s3}`;
+    }
+    function addToWishlist(prod){//Double click to add
+
+        if(localStorage.getItem("wishlist")===null){
+        localStorage.setItem("wishlist",JSON.stringify([]));
+        }
+
+        let wishData=JSON.parse(localStorage.getItem("wishlist"));
+
+        let datainWishlist={
+        catg:prod.fields.category,
+        desc:prod.fields.description,
+        discP:prod.fields.discount_price,
+        img:prod.fields.image,
+        nam:prod.fields.name,
+        rat:prod.fields.rating,
+        retP:prod.fields.retail_price,
+        }
+
+        wishData.push(datainWishlist);
+
+        localStorage.setItem("wishlist",JSON.stringify(wishData));     
+
+        }
 </script>
 
