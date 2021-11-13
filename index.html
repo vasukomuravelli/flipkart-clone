@@ -8,7 +8,7 @@
       Online Shopping Site for Mobiles, Electronics, Furniture, Grocery,
       Lifestyle, Books & More. Best Offers!
     </title>
-    <!-- <link rel="icon" href="https://static-assets-web.flixcart.com/www/promos/new/20150528-140547-favicon-retina.ico"/> -->
+    <link rel="icon" href="https://static-assets-web.flixcart.com/www/promos/new/20150528-140547-favicon-retina.ico"/>
     <link rel="stylesheet" href="./style/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link
@@ -48,7 +48,7 @@
   import slideshow from "./components/slideshow.js";
   import {categories} from "./components/categories.js";
   import {footer,Flipkartinfo} from "./components/footer.js";
-  import {search,debounce,displayResults,toProductPage} from "./scripts/script.js";
+  import {search,debounce,displayResults} from "./scripts/script.js";
   import {seggregate,showcarousel} from "./components/carousel.js";
 // Navbar Functionality start
   let nbar = document.querySelector(".navbar");
@@ -67,7 +67,7 @@
   let searchbar = document.getElementById("searchbox");
   let output = document.getElementById("output");
   searchbar.oninput = function(){
-    debounce(search,2000);
+    debounce(search,1000);
   }
 // categories display
   let cat = document.querySelector(".categories");
@@ -204,6 +204,13 @@
 window.addEventListener('click',()=>{
   output.style.display = "none";
 })
+
+let checkin = document.querySelector(".login");
+let abc = localStorage.getItem("flag1");
+if(abc)
+{
+  checkin.innerText = "Vasu";
+}
 // page_info
 let info = document.querySelector(".flipkart_info")
 info.innerHTML = Flipkartinfo();
