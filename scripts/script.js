@@ -70,7 +70,7 @@ function toProductPage(p)
     console.log(p);
     // if(localStorage.getItem("Flip_product")===null)
     // {
-    //     localStorage.setItem("Flip_product",[]);
+    //     localStorage.setItem("Flip_product",JSON.stringify([]));
     // }
     // let productToDisplay = JSON.parse(localStorage.getItem("Flip_product"));
 
