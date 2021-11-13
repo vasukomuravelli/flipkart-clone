@@ -60,32 +60,13 @@ function displayResults(p)
     output.style.display = "block";
     p.forEach(element => {
         let name = document.createElement('li');
-        name.innerText = element;
+        let anchor = document.createElement('a');
+        anchor.href = `./product.html#product=${element}`;
+        anchor.innerText = element;
+        name.append(anchor);
         output.append(name);
     });
 
 }
-function toProductPage(p)
-{
-    console.log(p);
-    // if(localStorage.getItem("Flip_product")===null)
-    // {
-    //     localStorage.setItem("Flip_product",JSON.stringify([]));
-    // }
-    // let productToDisplay = JSON.parse(localStorage.getItem("Flip_product"));
 
-    // if(productToDisplay.length != 0)
-    // {
-    //     while(productToDisplay.length==0)
-    //     {
-    //         productToDisplay.pop();
-    //     }
-    // }
-    // productToDisplay.push(p);
-    
-    // localStorage.setItem("Flip_product",JSON.stringify(productToDisplay));
-
-    // window.location.href = "productpage.html";
-}
-
-export {search,debounce,displayResults,toProductPage};
+export {search,debounce,displayResults};
