@@ -312,6 +312,9 @@ body{
     height: 50px;
 }
 /* CSS STYling for carousels */
+.item a{
+    color: inherit;
+}
 .C_heading{
     background-color: white;
     padding: 25px;
