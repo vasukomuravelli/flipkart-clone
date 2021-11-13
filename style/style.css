@@ -154,6 +154,13 @@ body{
 .image{
     display: flex;
 }
+.navbar>div>:last-child{
+    color: inherit;
+    margin-top: inherit;
+}
+.navbar>div>:last-child>div{
+    margin-top: 10px;
+}
 /* CSS styling for dropdown */
 .dropdown, .login_dropdown{
     display: none;
@@ -173,9 +180,13 @@ body{
 .login_dropdown b{
     font-weight: 500;    
 }
-.login_dropdown a{
+.signup{
     margin-left: 40px;
     color: #2874f0;
+}
+.login_dropdown a{
+    text-decoration: none;
+    margin-left: none;
 }
 .login_div:hover .login_dropdown,
 .more:hover .dropdown{
@@ -197,7 +208,10 @@ body{
 .dropdown li span, .login_dropdown li span{
     color: #2874f0;
 }
-.login_dropdown li a:hover{
+.login_dropdown a:hover{
+    text-decoration: none;
+}
+.signup:hover{
     text-decoration: underline;
 }
 .dropdown:after, .login_dropdown:after{
@@ -312,6 +326,9 @@ body{
     height: 50px;
 }
 /* CSS STYling for carousels */
+.item a{
+    color: inherit;
+}
 .C_heading{
     background-color: white;
     padding: 25px;
@@ -550,25 +567,4 @@ hr{
     border-width: 0.25px;
     color: #878787;
 }
-/* for empty cart */
-#empty_cart{
-    width:80%;
-    height:40%;
-    margin-left: 10%;
-    background-color:#FFFFFF;
 
-}
-#empty_cart>p{
-    font-size:30px;
-    text-align:center;
-}
-#empty_cart>button{
-    background-color:#2874F0;
-    border:none;
-    color: #f1f3f6;
-    width: 15%;
-    height:30px;
-    font-size:18px;
-    margin-left: 42%;
-    margin-bottom: 2%;
-}
