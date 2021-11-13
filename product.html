@@ -189,8 +189,7 @@
     <script>
 
 let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
-
-fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filterByFormula=(${r_product})`,{
+  fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filterByFormula=({name} = '${r_product}')`,{
     method:'GET',
     headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
     
@@ -198,7 +197,9 @@ fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filt
    return res.json(); 
   }).then(function(res){
     add(res.records[0].fields);
+    //rob();
   });
+  
 
       let container1= document.getElementById("containeri");
       let container2= document.getElementById("containerd"); 
@@ -425,10 +426,10 @@ fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filt
           del_cond.textContent = `if ordered before by 11:45 PM`;
         }
   
-        var check=false;
+
         
         function addToWishlist(){//Double click to add
-            check=true;
+
 
             let heart_button = document.querySelector('.heart');
             heart_button.style.color="red";
@@ -468,11 +469,7 @@ fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filt
             break;
         }
     }
-          /*
-          remData.pop();
-          remData.pop();
-          remData.pop();//3 pops cause of double click two times
-          */
+
           localStorage.setItem("wishlist",JSON.stringify(remData));
 
         }
@@ -498,8 +495,9 @@ fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filt
   
           localStorage.setItem("cart",JSON.stringify(cartData));
         }
-     
-        function add(d){ 
+      
+
+function add(d){ 
 
 //if(localStorage.getItem("prods")===null){
     localStorage.setItem("prods",JSON.stringify([]))
@@ -523,7 +521,7 @@ let data=JSON.parse(localStorage.getItem("prods"));
 data.push(prod_data);
 localStorage.setItem("prods",JSON.stringify(data));
 
-}
+}        
 
   </script>   
 
