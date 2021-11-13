@@ -387,6 +387,7 @@
     .prices > div{
         display: flex;
         justify-content:space-between;
+        margin-right: 4%;
        
     }
     .price_div{
@@ -423,7 +424,7 @@
     .button_div>button{
         background-color:#FFFFFF;
         border: none;
-        width: 30%;
+        width: 40%;
         height:40%;
         font-size: 17px;
         font-weight: 600;
@@ -435,12 +436,11 @@
         font-size:12px;
         font-weight:500;
 
-    }
- 
+    } 
 </style>
 
 
-<body>
+<body class="body_div">
     <div id="header">
         <div>
             <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fk-plus_3b0baa.png" alt="">
@@ -551,13 +551,7 @@
         let counter = 0;
         if(cart.length==0)
         {
-            let Empty_div = document.querySelector("body>div");
-            Empty_div.innerHTML = `
-            <h2>My Cart</h2>
-            <div>
-                <img src = "https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"/>
-                <p> Your cart is empty!</p>
-            </div>`;
+                document.location.href ="emptycart.html";
         }
         else
         {
