@@ -188,6 +188,18 @@
 
     <script>
 
+let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
+
+fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filterByFormula=(${r_product})`,{
+    method:'GET',
+    headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
+    
+  }).then(function(res){
+   return res.json(); 
+  }).then(function(res){
+    add(res.records[0].fields);
+  });
+
       let container1= document.getElementById("containeri");
       let container2= document.getElementById("containerd"); 
 
@@ -487,6 +499,32 @@
           localStorage.setItem("cart",JSON.stringify(cartData));
         }
      
+        function add(d){ 
+
+//if(localStorage.getItem("prods")===null){
+    localStorage.setItem("prods",JSON.stringify([]))
+//}
+
+
+
+let prod_data={
+     category:d.category ,
+     description:d.description,
+     discount_price:d.discount_price,
+     image:d.image,
+     name:d.name,
+     rating:d.rating,
+     retail_price:d.retail_price,   
+     tree:d.tree,
+}
+
+let data=JSON.parse(localStorage.getItem("prods"));
+
+data.push(prod_data);
+localStorage.setItem("prods",JSON.stringify(data));
+
+}
+
   </script>   
 
 </body>
