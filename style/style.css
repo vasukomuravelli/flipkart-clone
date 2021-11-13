@@ -550,3 +550,25 @@ hr{
     border-width: 0.25px;
     color: #878787;
 }
+/* for empty cart */
+#empty_cart{
+    width:80%;
+    height:40%;
+    margin-left: 10%;
+    background-color:#FFFFFF;
+
+}
+#empty_cart>p{
+    font-size:30px;
+    text-align:center;
+}
+#empty_cart>button{
+    background-color:#2874F0;
+    border:none;
+    color: #f1f3f6;
+    width: 15%;
+    height:30px;
+    font-size:18px;
+    margin-left: 42%;
+    margin-bottom: 2%;
+}
