@@ -36,13 +36,13 @@ function showcarousel(p,parent)
             name = element.fields.name;
         }
         string += `<li class="item">
-        <div class="box" onclick = "toProductPage(${element})">
+        <a href = "./product.html#name=${element.fields.name}"><div class="box" >
             <div class="slide-img">
                 <img src = ${image}>                
             </div>            
             <div class="detail-box">
                 <div class="type">
-                    <p title = ${element.fields.name}>${name}</p>
+                    <p title = '${element.fields.name}'>${name}</p>
                 </div>
                 <div class = "rating">
                     <div><p>${rating}</p><span class="material-icons">star_border</span></div>
@@ -54,7 +54,7 @@ function showcarousel(p,parent)
                 <p>₹${discount_price}% off</p>
                 </div>
             </div>        
-        </div>
+        </div></a>
     </li>`;
     });
     parent.innerHTML = string;
