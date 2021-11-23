@@ -217,6 +217,9 @@ info.innerHTML = Flipkartinfo();
 // Footer 
 let foot = document.querySelector('.foot');
 foot.innerHTML = footer();
+
+function getdata(){
+    fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=100",{
     method:'GET',
     headers:{
         'Authorization':'Bearer keyIkILcyVWkPItLt'
