@@ -21,7 +21,7 @@ function categories(){
             <img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100"/>
             <p>Electronics</p>
         </div></a>
-        <a href = "filter.html"><div>
+        <a id="homeapp" href = "filter.html"><div>
             <img src="https://rukminim1.flixcart.com/flap/128/128/image/ab7e2b022a4587dd.jpg?q=100"/>
             <p>Home</p>
         </div></a>
@@ -29,7 +29,7 @@ function categories(){
             <img src="https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100"/>
             <p>Appliances</p>
         </div></a>
-        <a href = "filter.html"><div>
+        <a id="travel" href = "filter.html"><div>
             <img src="https://rukminim1.flixcart.com/flap/128/128/image/71050627a56b4693.png?q=100"/>
             <p>Travel</p>
         </div></a>

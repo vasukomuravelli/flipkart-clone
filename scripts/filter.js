@@ -1,17 +1,4 @@
-// fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=16",{
-//         method:'GET',
-//         headers:{
-//             'Authorization':'Bearer keyIkILcyVWkPItLt'
-//         }
-    
-//     })
-//     .then(function(res){
-//         return res.json(); 
-//     })
-//     .then(function(res){
-//         list = res.records;
-//         products(res.records)
-//     });
+
 let cat = localStorage.getItem("cat_name");
 console.log(cat)
     switch(cat){
@@ -38,16 +25,16 @@ console.log(cat)
 
     // set
 
-let prod_list = document.getElementById("products")
-    
-
+var prod_list = document.getElementById("products");
+ 
     function products(records){
+        var prod_list = document.getElementById("products");
         // console.log(records)
         records.forEach(({id,fields}) => {
-            let prod_div = document.createElement("div");
+            let prod_div = document.createElement("div") 
             prod_div.className = "card p-2";
             prod_div.onclick = function(){
-                window.location.href = `/product.html#name=${fields.name}`;
+                // show_product()
                 console.log(id)
             }
             prod_div.style.width = "16rem"
@@ -56,7 +43,7 @@ let prod_list = document.getElementById("products")
             img_div.className = "prod_img_div"
 
             let img = document.createElement("img")
-            img.className = "card-img-top prod_img";
+            img.className = "card-img-top prod_img ";
             let p_img = toarray(fields.image);
             img.src = p_img[0];
 
@@ -108,92 +95,314 @@ let prod_list = document.getElementById("products")
         return imgarray;
     }
 
-    
+    var [cm, cw, ct, ch, cw] = [0,0,0,0,0];
+
     function mens_shoes(){
         document.getElementById("products").innerHTML = null;
-        fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({category} = 'mensshoes')",{
-            method:'GET',
-            headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
-            
+        var All_Products = JSON.parse(localStorage.getItem("all_products"));
+        var newlist = [];
+
+        All_Products.forEach((prod)=>{
+            if(prod.fields.category === "mensshoes"){
+                newlist.push(prod);
+            }
         })
-        .then(function(res){
-            return res.json(); 
-        })
-        .then(function(res){
-            console.log(res);
-            list = res.records;
-            products(res.records)
-        });
+
+        let c_mens = document.getElementById("mens").checked;
+        let c_womens = document.getElementById("womens").checked;
+        let c_travels = document.getElementById("travels").checked;
+        let c_homeapp = document.getElementById("homeapp").checked;
+        let c_watches = document.getElementById("watches").checked;
+
+        if(c_mens == true &&  cm === 0){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "mensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+            cm = 1;
+        }
+
+        if(c_womens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "womensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_travels == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "travel"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_homeapp == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_watches == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+        localStorage.setItem("newlist",JSON.stringify(newlist))
+        products(newlist)
     }
 
     function women_shoes(){
         document.getElementById("products").innerHTML = null;
-        fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({category} = 'womensshoes')",{
-            method:'GET',
-            headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
-            
-        })
-        .then(function(res){
-            return res.json(); 
-        })
-        .then(function(res){
-            console.log(res);
-            list = res.records;
-            products(res.records)
-        });
-    }
+        var All_Products = JSON.parse(localStorage.getItem("all_products"));
+        var newlist = [];
 
+        All_Products.forEach((prod)=>{
+            if(prod.fields.category === "womensshoes"){
+                newlist.push(prod);
+            }
+        })
+
+        let c_mens = document.getElementById("mens").checked;
+        let c_womens = document.getElementById("womens").checked;
+        let c_travels = document.getElementById("travels").checked;
+        let c_homeapp = document.getElementById("homeapp").checked;
+        let c_watches = document.getElementById("watches").checked;
+
+        if(c_mens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "mensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_womens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "womensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_travels == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "travel"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_homeapp == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_watches == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+        localStorage.setItem("newlist",JSON.stringify(newlist))
+        products(newlist)
+    }
+    
     function travel(){
         document.getElementById("products").innerHTML = null;
-        fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({category} = 'travel')",{
-            method:'GET',
-            headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
-            
+
+        var All_Products = JSON.parse(localStorage.getItem("all_products"));
+        var newlist = [];
+
+        All_Products.forEach((prod)=>{
+            if(prod.fields.category === "travel"){
+                newlist.push(prod);
+            }
         })
-        .then(function(res){
-            return res.json(); 
-        })
-        .then(function(res){
-            // console.log(res);
-            list = res.records;
-            products(res.records)
-        });
+
+        let c_mens = document.getElementById("mens").checked;
+        let c_womens = document.getElementById("womens").checked;
+        let c_travels = document.getElementById("travels").checked;
+        let c_homeapp = document.getElementById("homeapp").checked;
+        let c_watches = document.getElementById("watches").checked;
+
+        if(c_mens == true && ct === 0){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "mensshoes"){
+                    newlist.push(prod);
+                }
+            }) 
+            ct = 1; 
+        }
+
+        if(c_womens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "womensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_travels == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "travel"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_homeapp == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_watches == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        localStorage.setItem("newlist",JSON.stringify(newlist))
+        products(newlist)
     }
     
     function watches(){
         document.getElementById("products").innerHTML = null;
-        console.log("Wateches SORT")
-        fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({category} = 'watches')",{
-            method:'GET',
-            headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
-            
+        var All_Products = JSON.parse(localStorage.getItem("all_products"));
+        var newlist = [];
+
+        All_Products.forEach((prod)=>{
+            if(prod.fields.category === "watches"){
+                newlist.push(prod);
+            }
         })
-        .then(function(res){
-            return res.json(); 
-        })
-        .then(function(res){
-            // console.log(res);
-            list = res.records;
-            products(res.records)
-        });
+
+        let c_mens = document.getElementById("mens").checked;
+        let c_womens = document.getElementById("womens").checked;
+        let c_travels = document.getElementById("travels").checked;
+        let c_homeapp = document.getElementById("homeapp").checked;
+        let c_watches = document.getElementById("watches").checked;
+
+        if(c_mens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "mensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_womens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "womensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_travels == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "travel"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_homeapp == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_watches == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+        localStorage.setItem("newlist",JSON.stringify(newlist))
+        products(newlist)
+        
     }
 
     function homeapp(){
+        
         document.getElementById("products").innerHTML = null;
-        console.log("Wateches SORT")
-        fetch("https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?filterByFormula=({category} = 'homeappliances')",{
-            method:'GET',
-            headers:{'Authorization':'Bearer keyIkILcyVWkPItLt'}
-            
+        var All_Products = JSON.parse(localStorage.getItem("all_products"));
+        var newlist = [];
+
+        All_Products.forEach((prod)=>{
+            if(prod.fields.category === "homeappliances"){
+                newlist.push(prod);
+            }
         })
-        .then(function(res){
-            return res.json(); 
-        })
-        .then(function(res){
-            // console.log(res);
-            list = res.records;
-            products(res.records)
-        });
+
+        let c_mens = document.getElementById("mens").checked;
+        let c_womens = document.getElementById("womens").checked;
+        let c_travels = document.getElementById("travels").checked;
+        let c_homeapp = document.getElementById("homeapp").checked;
+        let c_watches = document.getElementById("watches").checked;
+
+        if(c_mens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "mensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_womens == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "womensshoes"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_travels == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "travel"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_homeapp == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+
+        if(c_watches == true){
+            All_Products.forEach((prod)=>{
+                if(prod.fields.category === "watches"){
+                    newlist.push(prod);
+                }
+            })  
+        }
+        
+        localStorage.setItem("newlist",JSON.stringify(newlist))
+        products(newlist)
+        
     }
     
     function s99_499(){
@@ -322,29 +531,35 @@ let prod_list = document.getElementById("products")
     }
 
     function LtoH(){
-        let sortlist = [];
+        // let sortlist = [];
+        let newlist1 = JSON.parse(localStorage.getItem("newlist"));
+        
         document.getElementById("products").innerHTML = null;
 
-        let arr = list.sort(function(a,b){
+        let arr = newlist1.sort(function(a,b){
            return a.fields.discount_price - b.fields.discount_price;
         });
 
         products(arr)
+
+        
     }
 
     function HtoL(){
-        let sortlist = [];
+        let newlist1 = JSON.parse(localStorage.getItem("newlist"));
+
         document.getElementById("products").innerHTML = null;
 
-        let arr = list.sort(function(a,b){
+        let arr = newlist1.sort(function(a,b){
            return b.fields.discount_price - a.fields.discount_price;
         });
 
         products(arr)
+
+        
     }
 
     function Clear_filters(){
-        console.log("i")
         location.reload()
     }
 

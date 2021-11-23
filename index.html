@@ -217,4 +217,38 @@ info.innerHTML = Flipkartinfo();
 // Footer 
 let foot = document.querySelector('.foot');
 foot.innerHTML = footer();
+    method:'GET',
+    headers:{
+        'Authorization':'Bearer keyIkILcyVWkPItLt'
+    }
+    })
+    .then(function(res){
+        return res.json(); 
+    })
+    .then(function(res){
+        // list = ;
+        console.log("getdata in")
+        localStorage.setItem("all_products",JSON.stringify(res.records))
+    });
+}
+
+getdata()
+
+let travel =  document.getElementById("travel");
+let homeapp = document.getElementById("homeapp");
+
+
+
+travel.addEventListener("click", ()=>{
+    localStorage.setItem("cat_name",3)
+    location.href = "filter.html"
+})
+
+homeapp.addEventListener("click", ()=>{
+    console.log("4444")
+    localStorage.setItem("cat_name",4)
+    location.href = "filter.html"
+})
+
+
 </script>
