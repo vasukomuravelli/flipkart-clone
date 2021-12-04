@@ -187,7 +187,7 @@
     </div> <!--footer--> 
 
     <script>
-
+var prod;
 let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
   fetch(`https://api.airtable.com/v0/appfnClvZG34RFIeI/Table%201?maxRecords=1&filterByFormula=({name} = '${r_product}')`,{
     method:'GET',
@@ -196,9 +196,10 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
   }).then(function(res){
    return res.json(); 
   }).then(function(res){
-    add(res.records[0].fields);
+    // add(res.records[0].fields);
+    prod = res.records[0].fields;
     //rob();
-  });
+  console.log(prod)
   
 
       let container1= document.getElementById("containeri");
@@ -206,14 +207,15 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
 
       //2 accessing what product is selected
       
-      let prod=JSON.parse(localStorage.getItem("prods")); 
-      var i=prod[0].image.slice(1,prod[0].image.length-1);
+      // let prod=JSON.parse(localStorage.getItem("prods"));
+      // console.log("prod :",prod);
+      var i=prod.image.slice(1,prod.image.length-1);
       i=i.split(", ").map(String);
       //console.log(i.length);
       while(i.length>6){
         i.pop();
       }
-      //console.log(i.length);
+      console.log(i.length);
 
       
       //3 side image showing
@@ -275,9 +277,11 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
       
   //5 Wishlist button        
       let wishlist_icon = document.createElement("div");
-          wishlist_icon.innerHTML = `<span class="material-icons" ondblclick = "addToWishlist()"  onclick="removeFromWishlist(prod)">favorite_border </span>`;
+          wishlist_icon.innerHTML = `<span class="material-icons">favorite_border </span>`;
           wishlist_icon.setAttribute("class", "heart");    
-       
+          wishlist_icon.addEventListener("click",function(){
+            addToWishlist();
+          })
       container1.append(wishlist_icon);    
       
   //6 AddCart and BuyNow Buttons
@@ -301,15 +305,15 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
   //7 all data on right side
       
       let catgory=document.createElement("p");
-      var p=prod[0].tree.slice(2,prod[0].tree.length-2);
+      var p=prod.tree.slice(2,prod.tree.length-2);
       catgory.innerText=p;
       catgory.setAttribute("class","catgory")
       
       let title = document.createElement("p");
-            title.innerText = prod[0].name;
+            title.innerText = prod.name;
       
       let brand = document.createElement("p");
-      var n=prod[0].name.trim().split(" ").map(String);
+      var n=prod.name.trim().split(" ").map(String);
            brand.innerText = n[0];
             
             let Rating_Review_count = document.createElement("div");
@@ -321,7 +325,7 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
             let f_assure = document.createElement("img");
             f_assure.src ="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
       
-            if (prod[0].rating != 0) {
+            if (prod.rating != 0) {
               rating.innerHTML = Math.round(Math.random()*4+1)+`<span class="material-icons">star_border</span>`;
               Reviews.innerText = Math.round(Math.random()*100)+" "+"Reviews";
             }
@@ -329,16 +333,16 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
             let price = document.createElement("div");
             
             let New_price = document.createElement("p");
-            New_price.innerText = `₹ ${prod[0].discount_price}`;
+            New_price.innerText = `₹ ${prod.discount_price}`;
             
             let Old_price = document.createElement("p");
-            Old_price.innerHTML = `<s>₹ ${prod[0].retail_price}</s>`;
+            Old_price.innerHTML = `<s>₹ ${prod.retail_price}</s>`;
             
             let discount_tag = document.createElement("p");
             
-            if (prod[0].Old_Price != 0) {
+            if (prod.Old_Price != 0) {
               let discount =
-                ((prod[0].retail_price - prod[0].discount_price) / prod[0].retail_price) * 100;
+                ((prod.retail_price - prod.discount_price) / prod.retail_price) * 100;
               discount_tag.textContent = Math.floor(discount) + "% Off";
               discount_tag.style.fontWeight=790;
             } else {
@@ -376,7 +380,7 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
 
             let specs = document.createElement("ul");// highlights
             specs.setAttribute("class", "specs");
-            specs.textContent=prod[0].description;
+            specs.textContent=prod.description;
             
             let ser = document.createElement("p");
             ser.innerText = "Services";
@@ -430,48 +434,44 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
         
         function addToWishlist(){//Double click to add
 
-
-            let heart_button = document.querySelector('.heart');
-            heart_button.style.color="red";
-
-            if(localStorage.getItem("wishlist")===null){
+          let heart_button = document.querySelector('.heart');
+            
+          if(localStorage.getItem("wishlist")===null){
             localStorage.setItem("wishlist",JSON.stringify([]));
           }
-  
-          let wishData=JSON.parse(localStorage.getItem("wishlist"));
-  
-          let datainWishlist={
-            catg:prod[0].category,
-            desc:prod[0].description,
-            discP:prod[0].discount_price,
-            img:prod[0].image,
-            nam:prod[0].name,
-            rat:prod[0].rating,
-            retP:prod[0].retail_price,
-          }
-  
-          wishData.push(datainWishlist);
-  
-          localStorage.setItem("wishlist",JSON.stringify(wishData));
           
-        }
-
-
-        function removeFromWishlist(prod){ //Single click to remove
-          let heart_btn = document.querySelector('.heart');
-            heart_btn.style.color="grey";          
-
-          let remData=JSON.parse(localStorage.getItem("wishlist"));
-
-          for(var i=0;i<remData.length;i++){
-        if(remData[i].nam==prod[0].name){
-            remData.splice(i,1);
-            break;
-        }
-    }
-
-          localStorage.setItem("wishlist",JSON.stringify(remData));
-
+          let wishData=JSON.parse(localStorage.getItem("wishlist"));
+          let count = 0;
+          for(var i=0;i<wishData.length;i++)
+          {
+            if(wishData[i].Name === prod.Name)
+            {
+              var index = i;
+              count++;
+            }
+          }
+          if(count != 0)
+          {
+            wishData.splice(index,1);
+            heart_button.style.color="grey";
+            alert(`${prod.name} is removed from your wishlist`);
+          }
+          else{
+            let datainWishlist={
+              catg:prod.category,
+              desc:prod.description,
+              discP:prod.discount_price,
+              img:prod.image,
+              nam:prod.name,
+              rat:prod.rating,
+              retP:prod.retail_price,
+            }
+            
+            wishData.push(datainWishlist);
+            heart_button.style.color="red";
+            alert(`${prod.name} is added to your wishlist`);
+          }            
+          localStorage.setItem("wishlist",JSON.stringify(wishData));
         }
   
         function addproduct(){
@@ -482,13 +482,13 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
           let cartData=JSON.parse(localStorage.getItem("cart"));
   
           let datainCart={
-            catg:prod[0].category,
-            desc:prod[0].description,
-            discP:prod[0].discount_price,
-            img:prod[0].image,
-            nam:prod[0].name,
-            rat:prod[0].rating,
-            retP:prod[0].retail_price,
+            catg:prod.category,
+            desc:prod.description,
+            discP:prod.discount_price,
+            img:prod.image,
+            nam:prod.name,
+            rat:prod.rating,
+            retP:prod.retail_price,
           }
   
           cartData.push(datainCart);
@@ -497,32 +497,32 @@ let r_product = window.location.hash.split('=')[1].split('%20').join(' ');
           alert("Product is added to your cart");
         }
       
+      });
+// function add(d){ 
 
-function add(d){ 
-
-//if(localStorage.getItem("prods")===null){
-    localStorage.setItem("prods",JSON.stringify([]))
-//}
+// //if(localStorage.getItem("prods")===null){
+//     localStorage.setItem("prods",JSON.stringify([]))
+// //}
 
 
 
-let prod_data={
-     category:d.category ,
-     description:d.description,
-     discount_price:d.discount_price,
-     image:d.image,
-     name:d.name,
-     rating:d.rating,
-     retail_price:d.retail_price,   
-     tree:d.tree,
-}
+// let prod_data={
+//      category:d.category ,
+//      description:d.description,
+//      discount_price:d.discount_price,
+//      image:d.image,
+//      name:d.name,
+//      rating:d.rating,
+//      retail_price:d.retail_price,   
+//      tree:d.tree,
+// }
 
-let data=JSON.parse(localStorage.getItem("prods"));
+// let data=JSON.parse(localStorage.getItem("prods"));
 
-data.push(prod_data);
-localStorage.setItem("prods",JSON.stringify(data));
+// data.push(prod_data);
+// localStorage.setItem("prods",JSON.stringify(data));
 
-}  
+// }  
 
 let checkin = document.querySelector(".login");
 let abc = localStorage.getItem("flag1");
