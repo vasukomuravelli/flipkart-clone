@@ -34,7 +34,7 @@ var prod_list = document.getElementById("products");
             let prod_div = document.createElement("div") 
             prod_div.className = "card p-2";
             prod_div.onclick = function(){
-                // show_product()
+                window.location.href = `/product.html#name=${fields.name}`;
                 console.log(id)
             }
             prod_div.style.width = "16rem"
