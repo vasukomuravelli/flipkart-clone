@@ -10,6 +10,12 @@ The Clone of Flipkart website, an ecommerce giant, was finished in 5 days with t
 * Air table API for backend support (instead of local storage)
 * Slick Slider, an external CSS library.
 
+## Authentication Page: 
+
+ This page accepts basic details of user and authenticate with the OTP validation sent to the mail address of the user provided.
+ 
+![image](https://user-images.githubusercontent.com/91777048/148634679-a16bf6aa-5b17-4c8c-9685-6991a414e4a7.png)
+
 ## Home Page:
 
  This is the landing page which includes Navbar(login ehich enables user to signup & signin through OTP, search functionality of the various products on clicking the results redirect to Search Results page, cart which navigates user to cart page), which is common throughout website and also features the various categories of products as carousels.
@@ -17,13 +23,6 @@ For building carousel we have used Slick Slider, an external CSS library.
  
 ![image](https://user-images.githubusercontent.com/91777048/148634722-9eb733fa-73bc-46d9-bc07-b0124af882cf.png)
 ![image](https://user-images.githubusercontent.com/91777048/148634735-9fb75867-cf4a-4c03-8b9a-5a1f99924d6a.png)
-
-## Authentication Page: 
-
- This page accepts basic details of user and authenticate with the OTP validation sent to the mail address of the user provided.
- 
-![image](https://user-images.githubusercontent.com/91777048/148634679-a16bf6aa-5b17-4c8c-9685-6991a414e4a7.png)
-
 
 ## Search Results page:
 
