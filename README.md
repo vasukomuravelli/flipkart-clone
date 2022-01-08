@@ -1,4 +1,4 @@
-# flipkart-clone
+# Flipkart-clone
 
 The Clone of Flipkart website, an ecommerce giant, was finished in 5 days with team of 6 people. Implemented the few features like Search functionality, Cart functionality, Auth functionality, Sort &amp; Filter Functionality for the different categories of products .Created using the tech stacks HTML,CSS, JAVASCRIPT, External CSS library like Slick slider. For the backend support we have used an external air table API.
 
